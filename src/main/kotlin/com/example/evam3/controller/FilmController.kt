@@ -10,17 +10,33 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/film")
 class FilmController {
+
     @Autowired
     lateinit var filmService: FilmService
-
     @GetMapping
-    fun list (): ResponseEntity<*> {
-        return ResponseEntity(filmService.list(), HttpStatus.OK)
+    fun getAllFilms(): List<Film> {
+        return filmService.getAllFilms()
     }
-
+    @GetMapping("/{id}")
+    fun getFilmById(@PathVariable id: Long): Film {
+        return filmService.getFilmById(id)
+    }
     @PostMapping
-    fun save (@RequestBody film: Film): ResponseEntity<*> {
-        return ResponseEntity<Film>(filmService.save(film), HttpStatus.CREATED)
+    fun createFilm(@RequestBody film: Film): ResponseEntity<Film> {
+        val createdFilm = filmService.createFilm(film)
+        return ResponseEntity(createdFilm, HttpStatus.CREATED)
     }
-
+    @PostMapping("/{id}")
+    fun updateFilm(@PathVariable id: Long, @RequestBody updatedFilm: Film): Film {
+        return filmService.updateFilm(id, updatedFilm)
+    }
+    @PutMapping("/{id}")
+    fun putFilm(@PathVariable id: Long, @RequestBody updatedFilm: Film): Film {
+        return filmService.putFilm(id, updatedFilm)
+    }
+    @DeleteMapping("/delete/{id}")
+    fun deleteFilm(@PathVariable id: Long): Boolean? {
+        filmService.deleteFilm(id)
+        return true
+    }
 }

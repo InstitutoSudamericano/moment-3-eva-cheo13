@@ -6,25 +6,46 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
-
 @Service
 class FilmService {
+
     @Autowired
     lateinit var filmRepository: FilmRepository
-
-    fun list ():List<Film>{
+    fun getAllFilms(): List<Film> {
         return filmRepository.findAll()
     }
 
-    fun save (film:Film): Film{
-        try{
-            film.title?.takeIf { it.trim().isNotEmpty() }
-                ?: throw Exception("Film no debe ser vacio")
-            return filmRepository.save(film)
-        }
-        catch (ex: Exception){
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST,ex.message)
-        }
+    fun getFilmById(id: Long): Film {
+        return filmRepository.findById(id)
+            .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id") }
+    }
 
+    fun createFilm(film: Film): Film {
+        return filmRepository.save(film)
+    }
+    fun updateFilm(id: Long, updatedFilm: Film): Film {
+        if (filmRepository.existsById(id)) {
+            updatedFilm.id = id
+            return filmRepository.save(updatedFilm)
+        } else {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id")
+        }
+    }
+
+    fun putFilm(id: Long, updatedFilm: Film): Film {
+        if (filmRepository.existsById(id)) {
+            updatedFilm.id = id
+            return filmRepository.save(updatedFilm)
+        } else {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id")
+        }
+    }
+
+    fun deleteFilm(id: Long) {
+        if (filmRepository.existsById(id)) {
+            filmRepository.deleteById(id)
+        } else {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id")
+        }
     }
 }
