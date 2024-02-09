@@ -1,0 +1,33 @@
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m109c2cd[m HEAD@{1}: commit: Guardar cambios locales
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: checkout: moving from main to main
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{3}: reset: moving to 045c751e2bea9b50ebf8868fc7b0478f3aa293dd
+[33mba5b529[m HEAD@{4}: reset: moving to ba5b5297818878035fda795860e95d742eb7ee8f
+[33m5a8103f[m HEAD@{5}: reset: moving to origin/main
+[33m5a8103f[m HEAD@{6}: reset: moving to HEAD
+[33m5a8103f[m HEAD@{7}: checkout: moving from prueba3 to main
+[33m5a8103f[m HEAD@{8}: checkout: moving from main to prueba3
+[33m5a8103f[m HEAD@{9}: checkout: moving from nueva-rama-desde-commit to main
+[33mba5b529[m HEAD@{10}: checkout: moving from nueva-rama-para-cinema-crud to nueva-rama-desde-commit
+[33m0b2fd40[m HEAD@{11}: checkout: moving from nueva-rama-desde-commit to nueva-rama-para-cinema-crud
+[33mba5b529[m HEAD@{12}: checkout: moving from nueva-rama-para-cinema-crud to nueva-rama-desde-commit
+[33m0b2fd40[m HEAD@{13}: checkout: moving from nueva-rama-desde-commit to nueva-rama-para-cinema-crud
+[33mba5b529[m HEAD@{14}: checkout: moving from nueva-rama-para-cinema-crud to nueva-rama-desde-commit
+[33m0b2fd40[m HEAD@{15}: checkout: moving from nueva-rama-desde-commit to nueva-rama-para-cinema-crud
+[33mba5b529[m HEAD@{16}: checkout: moving from ba5b5297818878035fda795860e95d742eb7ee8f to nueva-rama-desde-commit
+[33mba5b529[m HEAD@{17}: checkout: moving from main to ba5b5297818878035fda795860e95d742eb7ee8f
+[33m5a8103f[m HEAD@{18}: pull origin main: Merge made by the 'ort' strategy.
+[33m0b2fd40[m HEAD@{19}: checkout: moving from nueva-rama-desde-commit to main
+[33mba5b529[m HEAD@{20}: checkout: moving from ba5b5297818878035fda795860e95d742eb7ee8f to nueva-rama-desde-commit
+[33mba5b529[m HEAD@{21}: checkout: moving from main to ba5b5297818878035fda795860e95d742eb7ee8f
+[33m0b2fd40[m HEAD@{22}: merge nueva-rama-para-cinema-crud: Fast-forward
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{23}: checkout: moving from nueva-rama-para-cinema-crud to main
+[33m0b2fd40[m HEAD@{24}: checkout: moving from nueva-rama-para-cinema-crud to nueva-rama-para-cinema-crud
+[33m0b2fd40[m HEAD@{25}: commit: Realizar cambios para Cinema CRUD
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{26}: checkout: moving from 045c751e2bea9b50ebf8868fc7b0478f3aa293dd to nueva-rama-para-cinema-crud
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{27}: checkout: moving from main to 045c751e2bea9b50ebf8868fc7b0478f3aa293dd
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{28}: reset: moving to 045c751e2bea9b50ebf8868fc7b0478f3aa293dd
+[33m59177b9[m HEAD@{29}: commit: Integracion VIEW
+[33mae923c0[m HEAD@{30}: commit: Integracion JWT
+[33m045c751[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{31}: commit: Primer Subida CRUD - Cinema
+[33mba5b529[m HEAD@{32}: clone: from https://github.com/InstitutoSudamericano/moment-3-eva-cheo13.git

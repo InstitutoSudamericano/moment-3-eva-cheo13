@@ -4,6 +4,8 @@ import com.example.evam3.entity.Character
 import com.example.evam3.service.CharacterService
 import com.example.evam3.service.SceneService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/characters")
@@ -24,18 +26,19 @@ class CharacterController {
     }
 
     @PostMapping
-    fun createCharacter(@RequestBody character: Character): Character {
-        return characterService.createCharacter(character)
+    fun createCharacter(@RequestBody character: Character): ResponseEntity<Character> {
+        val createCharacter = characterService.createCharacter(character)
+        return ResponseEntity(createCharacter, HttpStatus.CREATED)
     }
 
     @PutMapping("/{id}")
-    fun updateCharacter(@PathVariable id: Long, @RequestBody updatedCharacter: Character): Character {
-        return characterService.updateCharacter(id, updatedCharacter)
+    fun putCharacter(@PathVariable id: Long, @RequestBody updatedCharacter: Character): Character {
+        return characterService.putCharacter(updatedCharacter)
     }
 
     @PatchMapping("/{id}")
-    fun patchCharacter(@PathVariable id: Long, @RequestBody updatedCharacter: Character): Character {
-        return characterService.patchCharacter(id, updatedCharacter)
+    fun updateCharacter(@PathVariable id: Long, @RequestBody updatedCharacter: Character): Character {
+        return characterService.updateCharacter(updatedCharacter)
     }
 
     @DeleteMapping("/delete/{id}")

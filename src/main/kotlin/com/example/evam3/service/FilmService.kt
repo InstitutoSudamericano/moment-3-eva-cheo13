@@ -11,6 +11,7 @@ class FilmService {
 
     @Autowired
     lateinit var filmRepository: FilmRepository
+
     fun getAllFilms(): List<Film> {
         return filmRepository.findAll()
     }
@@ -23,29 +24,48 @@ class FilmService {
     fun createFilm(film: Film): Film {
         return filmRepository.save(film)
     }
-    fun updateFilm(id: Long, updatedFilm: Film): Film {
-        if (filmRepository.existsById(id)) {
-            updatedFilm.id = id
+    fun putFilm(updatedFilm: Film): Film {
+        try {
+            filmRepository.findById(updatedFilm.id)
+                ?: throw Exception("ID no existe")
             return filmRepository.save(updatedFilm)
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id")
+        }
+        catch (ex:Exception){
+            throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
     }
 
-    fun putFilm(id: Long, updatedFilm: Film): Film {
-        if (filmRepository.existsById(id)) {
-            updatedFilm.id = id
-            return filmRepository.save(updatedFilm)
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id")
+
+
+
+    fun updateFilm(updatedFilm: Film): Film {
+        try{
+            val response = filmRepository.findById(updatedFilm.id)
+                ?: throw Exception("ID no existe")
+            response.apply {
+                title=updatedFilm.title
+                director=updatedFilm.director
+            }
+            return filmRepository.save(response)
+        }
+        catch (ex:Exception){
+            throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
     }
+
+
 
     fun deleteFilm(id: Long) {
-        if (filmRepository.existsById(id)) {
-            filmRepository.deleteById(id)
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id")
-        }
+        val existingFilm = filmRepository.findById(id)
+            .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Invoice no encontrado") }
+
+        return filmRepository.delete(existingFilm)
+    }
+
+    private fun validateFilm(film: Film) {
+
+        //if (film.director.isNullOrBlank() || film.genre.isNullOrBlank() || film.languages.isNullOrBlank()) {
+            // throw ValidationException("Campos obligatorios no pueden estar vacíos")
+        //}
     }
 }

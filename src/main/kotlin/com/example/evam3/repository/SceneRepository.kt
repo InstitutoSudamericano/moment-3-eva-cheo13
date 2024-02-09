@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface SceneRepository:JpaRepository<Scene, Long> {
+interface SceneRepository:JpaRepository<Scene, Long?> {
     fun findById(id: Long?): Scene?
 }

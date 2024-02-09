@@ -13,8 +13,6 @@ class SceneController {
 
     @Autowired
     lateinit var sceneService: SceneService
-    @Autowired
-    lateinit var filmService: FilmService
 
     @GetMapping
     fun getAllScenes(): List<Scene> {
@@ -22,27 +20,24 @@ class SceneController {
     }
 
     @GetMapping("/{id}")
-    fun getSceneById(@PathVariable id: Long): ResponseEntity<Scene> {
-        val scene = sceneService.getSceneById(id)
-        return ResponseEntity.ok(scene)
+    fun getSceneById(@PathVariable id: Long): Scene {
+        return sceneService.getSceneById(id)
     }
 
     @PostMapping
     fun createScene(@RequestBody scene: Scene): ResponseEntity<Scene> {
         val createdScene = sceneService.createScene(scene)
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdScene)
+        return ResponseEntity(createdScene, HttpStatus.CREATED)
     }
 
     @PutMapping("/{id}")
-    fun updateScene(@PathVariable id: Long, @RequestBody updatedScene: Scene): ResponseEntity<Scene> {
-        val scene = sceneService.updateScene(id, updatedScene)
-        return ResponseEntity.ok(scene)
+    fun putScene(@PathVariable id: Long, @RequestBody updatedScene: Scene): Scene{
+        return sceneService.putScene(updatedScene)
     }
 
     @PatchMapping("/{id}")
-    fun patchScene(@PathVariable id: Long, @RequestBody updatedScene: Scene): ResponseEntity<Scene> {
-        val scene = sceneService.updateScene(id, updatedScene)
-        return ResponseEntity.ok(scene)
+    fun updateScene(@PathVariable id: Long, @RequestBody updatedScene: Scene): Scene {
+        return sceneService.updateScene(updatedScene)
     }
 
     @DeleteMapping("/delete/{id}")

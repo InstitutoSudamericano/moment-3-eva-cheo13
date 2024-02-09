@@ -2,6 +2,7 @@ package com.example.evam3.controller
 
 import com.example.evam3.entity.Film
 import com.example.evam3.service.FilmService
+import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -18,24 +19,26 @@ class FilmController {
         return filmService.getAllFilms()
     }
     @GetMapping("/{id}")
-    fun getFilmById(@PathVariable id: Long): Film {
+    fun getFilmById(@PathVariable("id") id: Long): Film {
         return filmService.getFilmById(id)
     }
     @PostMapping
-    fun createFilm(@RequestBody film: Film): ResponseEntity<Film> {
+    fun createFilm(@RequestBody @Valid film: Film): ResponseEntity<*> {
         val createdFilm = filmService.createFilm(film)
         return ResponseEntity(createdFilm, HttpStatus.CREATED)
     }
-    @PostMapping("/{id}")
-    fun updateFilm(@PathVariable id: Long, @RequestBody updatedFilm: Film): Film {
-        return filmService.updateFilm(id, updatedFilm)
-    }
     @PutMapping("/{id}")
-    fun putFilm(@PathVariable id: Long, @RequestBody updatedFilm: Film): Film {
-        return filmService.putFilm(id, updatedFilm)
+    fun putFilm(@RequestBody updatedFilm: Film): ResponseEntity<Film>{
+        return ResponseEntity(filmService.putFilm(updatedFilm), HttpStatus.OK)
     }
+
+    @PatchMapping("/{id}")
+    fun updateFilm(@PathVariable id: Long, @RequestBody updatedFilm: Film): ResponseEntity<Film> {
+        return ResponseEntity(filmService.updateFilm(updatedFilm), HttpStatus.OK)
+    }
+
     @DeleteMapping("/delete/{id}")
-    fun deleteFilm(@PathVariable id: Long): Boolean? {
+    fun deleteFilm(@PathVariable("id") id: Long): Boolean? {
         filmService.deleteFilm(id)
         return true
     }
