@@ -33,6 +33,9 @@ class Scene {
     @Column(name = "minutes", nullable = false)
     var minutes: BigInteger? = null
 
+
+
+
     @NotNull(message = "Film ID cannot be null")
     @Column(name = "film_id", nullable = false)
     var filmId: Int? = null

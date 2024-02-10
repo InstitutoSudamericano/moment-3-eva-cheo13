@@ -17,7 +17,7 @@ class FilmService {
     }
 
     fun getFilmById(id: Long): Film {
-        return filmRepository.findById(id)
+        return filmRepository.findById(id!!)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found with id: $id") }
     }
 

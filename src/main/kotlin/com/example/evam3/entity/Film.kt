@@ -27,7 +27,7 @@ class Film {
 
     @NotNull(message = "Duration cannot be null")
     @Column(name = "duration", nullable = false)
-    var duration: Int? = null
+    var duration: BigInteger? = null
 
     @NotNull(message = "Date not null")
     @Column(name = "release_date")
